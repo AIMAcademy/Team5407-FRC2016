@@ -15,11 +15,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
 	// RobotDrive myRobot;
 	// Joystick joy_RightDriveStick;
-	//Joystick joy_LeftWeaponsStick; 
+	// Joystick joy_LeftWeaponsStick; 
 	int autoLoopCounter;
 	RobotBase robotbase; 
 	Inputs inputs; 
-	Solenoids solenoids; 
+	Solenoids solenoids;
+	Shooter shooter;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -27,11 +28,11 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	// myRobot = new RobotDrive(0,1);
-    	//joy_RightDriveStick = new Joystick(0);
+    	// joy_RightDriveStick = new Joystick(0);
     	
     	robotbase = new RobotBase(0,1);
     	inputs = new Inputs(0);
-    	
+    	shooter = new Shooter(2);
     	
     	// 1) Declare solenoids below.
     	// 2) Add the inputs to set the solenoid variables
@@ -78,10 +79,11 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         // myRobot.arcadeDrive(joy_RightDriveStick);
         inputs.readValues();
+        shooter.readValues();
         robotbase.update();
         solenoids.update();
+        shooter.update();
         robotThink();
-
     }
     
     public void robotThink() {
