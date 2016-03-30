@@ -1,11 +1,17 @@
 package org.usfirst.frc.team5407.robot;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.DrawMode;
+import com.ni.vision.NIVision.Image;
+import com.ni.vision.NIVision.ShapeMode;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,12 +33,18 @@ public class Robot extends IterativeRobot {
 	Auton auton;
 	
 	CameraServer server;
+    int session;
+    Image frame;
+    AxisCamera camera;
 
     public Robot() {
-        server = CameraServer.getInstance();
-        server.setQuality(50);
+        //server = CameraServer.getInstance();
+        //server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture("cam0");
+        //server.startAutomaticCapture("cam0");
+        
+        frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+        camera = new AxisCamera("10.54.7.11");
     }
 
 	
@@ -102,8 +114,17 @@ public class Robot extends IterativeRobot {
     	
     	//robotbase.reset();	// resets gyro
     	//Timer.delay(2);		// waits for gyro to reset
+    	
+    	// IP Camera Code
+        NIVision.Rect rect = new NIVision.Rect(227, 307, 50, 50);
         
         while (isOperatorControl() && isEnabled()) {
+        	
+        	// IP Camera Code
+            camera.getImage(frame);
+            NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+            CameraServer.getInstance().setImage(frame);
+        	
             /** robot code here! **/
             inputs.readValues();
             robotbase.update();
