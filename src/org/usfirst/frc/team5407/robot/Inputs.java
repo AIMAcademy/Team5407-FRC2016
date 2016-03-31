@@ -37,7 +37,7 @@ public class Inputs {
 		
 		 d_PowerArcadeDrive = joy_RightDriveStick.getX() * -1 * .50;
 		 d_TurnArcadeDrive = joy_RightDriveStick.getY() * -1;
-		 d_ShooterWinch = joy_LeftWeaponsStick.getY() * -1;
+		 d_ShooterWinch = joy_LeftWeaponsStick.getY();
 		 
 		 b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
 		 b_ShooterPower = joy_LeftWeaponsStick.getRawButton(3);

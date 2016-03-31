@@ -147,11 +147,13 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShiftGears = inputs.b_ShiftGears;
     	solenoids.b_ShooterKicker = inputs.b_ShooterKicker;
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
-    	
+    	  	
     	// testing using potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer > 4.4 && inputs.d_ShooterWinch > 0.1){
+    	if(shooter.d_WinchPotentiometer < 0.75 && inputs.d_ShooterWinch > 0.1){
+    		shooter.d_ShooterWinch = -0.5;
     		shooter.d_ShooterWinch = 0;
-    	} else if (shooter.d_WinchPotentiometer < 0.5 && inputs.d_ShooterWinch < -0.1){
+    	} else if (shooter.d_WinchPotentiometer > 2.825 && inputs.d_ShooterWinch < -0.1){
+    		shooter.d_ShooterWinch = 0.5;
     		shooter.d_ShooterWinch = 0;
     	} else {
     		shooter.d_ShooterWinch = inputs.d_ShooterWinch;

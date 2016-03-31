@@ -107,12 +107,12 @@ public class Shooter{
 		
 		// Test spinning up shooter wheel
 		if(inputs.b_ShooterPower == true){
-			d_ShooterPower = -0.50;
+			d_ShooterPower = -0.65;
     	}
 		
 		// Intake mechanism
 		if(inputs.b_ShooterArm == false){
-			d_ShooterPower = 0.50;
+			d_ShooterPower = 0.40;
 			solenoids.b_ShooterArm = true;
     	}
 		
@@ -128,7 +128,6 @@ public class Shooter{
 		}
 		
 		mot_ShooterPower.set(d_ShooterPower);
-
 
 	}
 
