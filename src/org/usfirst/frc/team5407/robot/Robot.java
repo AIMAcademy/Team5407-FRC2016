@@ -120,9 +120,10 @@ public class Robot extends IterativeRobot {
         
         while (isOperatorControl() && isEnabled()) {
         	
-        	// IP Camera Code
+//        	 IP Camera Code
             camera.getImage(frame);
             NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+            NIVision.imaqFlip(frame, frame, NIVision.FlipAxis.HORIZONTAL_AXIS);
             CameraServer.getInstance().setImage(frame);
         	
             /** robot code here! **/
