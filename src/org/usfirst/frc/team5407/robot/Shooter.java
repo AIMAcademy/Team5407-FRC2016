@@ -82,7 +82,7 @@ public class Shooter{
 			
 			d_ShooterPower = -0.5;
 			
-			pidControllerWinch.setSetpoint(2.5);
+			pidControllerWinch.setSetpoint(2.85);
 			pidControllerWinch.enable(); //begin PID control
 			SmartDashboard.putNumber("Winch PID Low", pidControllerWinch.get());
 			
@@ -93,7 +93,7 @@ public class Shooter{
 //			SmartDashboard.putNumber("Hall Effect PID High", pidControllerShooter.get());
 			
 			d_ShooterPower = -0.65;
-			pidControllerWinch.setSetpoint(0.925);
+			pidControllerWinch.setSetpoint(1.13);
 			pidControllerWinch.enable(); //begin PID control
 			SmartDashboard.putNumber("Winch PID High", pidControllerWinch.get());
 			

@@ -2,6 +2,7 @@ package org.usfirst.frc.team5407.robot;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
+import com.ni.vision.NIVision.FlipAxis;
 import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.ShapeMode;
 
@@ -132,6 +133,7 @@ public class Robot extends IterativeRobot {
         	try {
         		
             camera.getImage(frame);
+            NIVision.imaqFlip(frame, frame, FlipAxis.HORIZONTAL_AXIS);
             NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
             CameraServer.getInstance().setImage(frame);
         		
