@@ -26,7 +26,7 @@ public class Shooter{
     	//and dGain may cause dangerous, uncontrollable, or undesired behavior!
     final double pGain_S = -2.0, iGain_S = -2.0, dGain_S = 0.05; //these may need to be positive for a non-inverted motor
     //final double pGain_S = 1.0, iGain_S = 0.0, dGain_S = 0.0, fGain_S = 0.05; //these may need to be positive for a non-inverted motor
-    final double pGain_W = 0.75, iGain_W = 0.0, dGain_W = 0.0; //these may need to be positive for a non-inverted motor
+    final double pGain_W = -1.5, iGain_W = 0.0, dGain_W = 0.0; //these may need to be positive for a non-inverted motor
   	
     double d_WinchPotentiometer;
     double d_ShooterHallEffectSensor;
@@ -60,7 +60,7 @@ public class Shooter{
 	}
 		
 	public void readValues(){
-		d_WinchPotentiometer = ana_WinchPotentiometer.getAverageVoltage();
+		d_WinchPotentiometer = ana_WinchPotentiometer.pidGet();
 		d_ShooterHallEffectSensor = ana_ShooterHallEffectSensor.getAverageVoltage();
 		SmartDashboard.putNumber("Winch PID Voltage", d_WinchPotentiometer);
 		SmartDashboard.putNumber("Hall Effect Sensor Voltage", d_ShooterHallEffectSensor);
@@ -82,8 +82,8 @@ public class Shooter{
 			
 			d_ShooterPower = -0.5;
 			
+			pidControllerWinch.setSetpoint(2.5);
 			pidControllerWinch.enable(); //begin PID control
-			pidControllerWinch.setSetpoint(0.1);
 			SmartDashboard.putNumber("Winch PID Low", pidControllerWinch.get());
 			
 		} else if(inputs.b_HighShot == true){
@@ -93,9 +93,8 @@ public class Shooter{
 //			SmartDashboard.putNumber("Hall Effect PID High", pidControllerShooter.get());
 			
 			d_ShooterPower = -0.65;
-			
+			pidControllerWinch.setSetpoint(0.925);
 			pidControllerWinch.enable(); //begin PID control
-			pidControllerWinch.setSetpoint(1.25);
 			SmartDashboard.putNumber("Winch PID High", pidControllerWinch.get());
 			
 		} else if(inputs.b_LowShot == false && inputs.b_HighShot ==  false){

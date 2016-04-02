@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
     	try {
     	// IP Camera Code
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-        camera = new AxisCamera("10.54.07.11");
+        camera = new AxisCamera("10.54.07.10");
     	}
     	catch (Exception e) {
     		
@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-    	if(autoLoopCounter < 125) //Check if we've completed 100 loops (approximately 2 seconds)
+    	if(autoLoopCounter < 150) //Check if we've completed 100 loops (approximately 2 seconds)
 		{
 			// myRobot.drive(-0.5, 0.0); 	// drive forwards half speed
         	robotbase.mot_LeftDriveMotor.set(0.75);
@@ -164,7 +164,7 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
     	  	
     	// testing using potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer < 0.75 && inputs.d_ShooterWinch > 0.1){
+    	if(shooter.d_WinchPotentiometer < 0.9 && inputs.d_ShooterWinch > 0.1){
     		shooter.d_ShooterWinch = -0.5;
     		shooter.d_ShooterWinch = 0;
     	} else if (shooter.d_WinchPotentiometer > 2.825 && inputs.d_ShooterWinch < -0.1){
