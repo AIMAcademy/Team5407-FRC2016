@@ -46,7 +46,7 @@ public class Winch {
 	    	//this is just for testing servo values can be tuned 
 	    	if(inputs.b_ScissorLift == true){
 	    		d_LiftRelease = 0.2;
-	    		if (++i_periodicCounter > 500) {
+	    		if (++i_periodicCounter > 50) {
 	    			solenoids.b_ScissorLift = true;
 	    		}
 	    	} else {

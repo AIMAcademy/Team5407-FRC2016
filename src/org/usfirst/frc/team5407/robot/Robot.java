@@ -32,19 +32,22 @@ public class Robot extends IterativeRobot {
 	Winch winch;
 	Auton auton;
 	
-	CameraServer server;
+	// CameraServer server;
     int session;
     Image frame;
     AxisCamera camera;
 
     public Robot() {
+    	
+    	// USB camera code
         //server = CameraServer.getInstance();
         //server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
         //server.startAutomaticCapture("cam0");
         
+    	// IP Camera Code
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-        camera = new AxisCamera("10.54.7.11");
+        camera = new AxisCamera("10.54.07.11");
     }
 
 	
@@ -120,10 +123,9 @@ public class Robot extends IterativeRobot {
         
         while (isOperatorControl() && isEnabled()) {
         	
-//        	 IP Camera Code
+        	// IP Camera Code
             camera.getImage(frame);
             NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
-            NIVision.imaqFlip(frame, frame, NIVision.FlipAxis.HORIZONTAL_AXIS);
             CameraServer.getInstance().setImage(frame);
         	
             /** robot code here! **/
