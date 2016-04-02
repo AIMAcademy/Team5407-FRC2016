@@ -45,9 +45,14 @@ public class Robot extends IterativeRobot {
         //the camera name (ex "cam0") can be found through the roborio web interface
         //server.startAutomaticCapture("cam0");
         
+    	try {
     	// IP Camera Code
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         camera = new AxisCamera("10.54.07.11");
+    	}
+    	catch (Exception e) {
+    		
+    	}
     }
 
 	
@@ -124,9 +129,16 @@ public class Robot extends IterativeRobot {
         while (isOperatorControl() && isEnabled()) {
         	
         	// IP Camera Code
+        	try {
+        		
             camera.getImage(frame);
             NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
             CameraServer.getInstance().setImage(frame);
+        		
+        	}
+        	catch (Exception e) {
+        		
+        	}
         	
             /** robot code here! **/
             inputs.readValues();
