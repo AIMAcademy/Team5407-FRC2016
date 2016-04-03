@@ -9,9 +9,12 @@ import com.ni.vision.NIVision.ShapeMode;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 /**
@@ -31,12 +34,13 @@ public class Robot extends IterativeRobot {
 	Solenoids solenoids; 
 	Shooter shooter; 
 	Winch winch;
-	Auton auton;
+	Auton auton; 
 	
 	// CameraServer server;
     int session;
     Image frame;
     AxisCamera camera;
+    int autonSelector; 
 
     public Robot() {
     	
@@ -67,6 +71,7 @@ public class Robot extends IterativeRobot {
     	inputs = new Inputs(0,1,2);
     	shooter = new Shooter(2,5,1,2);
     	winch = new Winch(3,7,6);
+    	     
     	
     	// Instructions to add a new solenoid:
     	// 1) Declare solenoids below.
@@ -87,23 +92,32 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousInit() {
     	autoLoopCounter = 0;
+    	autonSelector = (int) SmartDashboard.getNumber("Auton Selector",0);
+    	System.out.println("Auton Selector: " + autonSelector);
     }
 
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-    	if(autoLoopCounter < 150) //Check if we've completed 100 loops (approximately 2 seconds)
-		{
-			// myRobot.drive(-0.5, 0.0); 	// drive forwards half speed
-        	robotbase.mot_LeftDriveMotor.set(0.75);
-        	robotbase.mot_RightDriveMotor.set(0.75);
-        	autoLoopCounter++;
-			} else {
-			// myRobot.drive(0.0, 0.0); 	// stop robot
-	    	robotbase.mot_LeftDriveMotor.set(0);
-	    	robotbase.mot_RightDriveMotor.set(0);
-		}
+    	switch(autonSelector){
+    		case 1:{
+    			if(autoLoopCounter < 150) //Check if we've completed 100 loops (approximately 2 seconds)
+				{
+    				robotbase.mot_LeftDriveMotor.set(0.75);
+    				robotbase.mot_RightDriveMotor.set(0.75);
+					} else {
+					robotbase.mot_LeftDriveMotor.set(0);
+					robotbase.mot_RightDriveMotor.set(0);
+				}
+    			break;
+    		}
+    		default:{
+    		
+    		}
+    		
+    	}
+    	autoLoopCounter++;
     }
     
     /**
@@ -166,10 +180,10 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
     	  	
     	// testing using potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer < 0.9 && inputs.d_ShooterWinch > 0.1){
+    	if(shooter.d_WinchPotentiometer < 1.0 && inputs.d_ShooterWinch > 0.1){
     		shooter.d_ShooterWinch = -0.5;
     		shooter.d_ShooterWinch = 0;
-    	} else if (shooter.d_WinchPotentiometer > 2.825 && inputs.d_ShooterWinch < -0.1){
+    	} else if (shooter.d_WinchPotentiometer > 3.0 && inputs.d_ShooterWinch < -0.1){
     		shooter.d_ShooterWinch = 0.5;
     		shooter.d_ShooterWinch = 0;
     	} else {
