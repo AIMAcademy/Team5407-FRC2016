@@ -112,6 +112,22 @@ public class Robot extends IterativeRobot {
 				}
     			break;
     		}
+    		 case 2 :{
+     			if(autoLoopCounter < 92) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+     				shooter.mot_ShooterWinch.set(-1);
+ 					} else {
+ 	     			shooter.mot_ShooterWinch.set(0);
+ 				}
+     			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+    				robotbase.mot_LeftDriveMotor.set(0.50);
+    				robotbase.mot_RightDriveMotor.set(0.50);
+					} else {
+					robotbase.mot_LeftDriveMotor.set(0);
+					robotbase.mot_RightDriveMotor.set(0);
+ 				} 
+    		}
     		default:{
     		
     		}

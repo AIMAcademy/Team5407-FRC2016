@@ -17,6 +17,8 @@ public class Shooter{
 	double d_ShooterPower;	
 	double d_ShooterWinch;
 	
+	boolean autonLow;
+	
 	// PID System Variables //
     // final double setPoints[] = {0.1, 0.25}; // low and high setpoints
     PIDController pidControllerShooter;
@@ -26,7 +28,7 @@ public class Shooter{
     	//and dGain may cause dangerous, uncontrollable, or undesired behavior!
     final double pGain_S = -2.0, iGain_S = -2.0, dGain_S = 0.05; //these may need to be positive for a non-inverted motor
     //final double pGain_S = 1.0, iGain_S = 0.0, dGain_S = 0.0, fGain_S = 0.05; //these may need to be positive for a non-inverted motor
-    final double pGain_W = -1.5, iGain_W = 0.0, dGain_W = 0.0; //these may need to be positive for a non-inverted motor
+    final double pGain_W = -1.75, iGain_W = 0.0, dGain_W = 0.0; //these may need to be positive for a non-inverted motor
   	
     double d_WinchPotentiometer;
     double d_ShooterHallEffectSensor;
@@ -70,7 +72,7 @@ public class Shooter{
 		
 		d_ShooterPower = 0;
 		solenoids.b_ShooterArm = false;
-		
+				
 		mot_ShooterPower.setInverted(false);
 		
 		// Test Low and High Shot Buttons
@@ -93,7 +95,7 @@ public class Shooter{
 //			SmartDashboard.putNumber("Hall Effect PID High", pidControllerShooter.get());
 			
 			d_ShooterPower = -0.65;
-			pidControllerWinch.setSetpoint(1.325);
+			pidControllerWinch.setSetpoint(1.05);
 			pidControllerWinch.enable(); //begin PID control
 			SmartDashboard.putNumber("Winch PID High", pidControllerWinch.get());
 			
