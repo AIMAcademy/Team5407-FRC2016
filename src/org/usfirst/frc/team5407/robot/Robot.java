@@ -194,17 +194,19 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShiftGears = inputs.b_ShiftGears;
     	solenoids.b_ShooterKicker = inputs.b_ShooterKicker;
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
+    	
+		shooter.d_ShooterWinch = -inputs.d_ShooterWinch;
     	  	
     	// testing using potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer < 1.0 && inputs.d_ShooterWinch > 0.1){
-    		shooter.d_ShooterWinch = -0.5;
-    		shooter.d_ShooterWinch = 0;
-    	} else if (shooter.d_WinchPotentiometer > 3.0 && inputs.d_ShooterWinch < -0.1){
-    		shooter.d_ShooterWinch = 0.5;
-    		shooter.d_ShooterWinch = 0;
-    	} else {
-    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
-    	}
+//    	if(shooter.d_WinchPotentiometer < 1.0 && inputs.d_ShooterWinch > 0.1){
+//    		shooter.d_ShooterWinch = -0.5;
+//    		shooter.d_ShooterWinch = 0;
+//    	} else if (shooter.d_WinchPotentiometer > 3.0 && inputs.d_ShooterWinch < -0.1){
+//    		shooter.d_ShooterWinch = 0.5;
+//    		shooter.d_ShooterWinch = 0;
+//    	} else {
+//    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
+//    	}
     	
     	// Obsolete:
     	// solenoids.b_ShooterArm = inputs.b_ShooterArm; <-- not needed - using method inside shooter class instead
