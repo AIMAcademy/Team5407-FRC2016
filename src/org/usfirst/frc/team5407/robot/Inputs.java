@@ -26,6 +26,8 @@ public class Inputs {
 	boolean b_HighShot;
 	boolean b_PortcullisOpener;
 	
+	boolean b_ResetShooterWinch;
+	
 	public Inputs(int USBConnector_RightDriveStick, int USBConnector_joy_LeftWeaponsStick, int USBConnector_joy_LeftWeaponsButtons){
 		joy_RightDriveStick = new Joystick(USBConnector_RightDriveStick); 
 		joy_LeftWeaponsStick = new Joystick(USBConnector_joy_LeftWeaponsStick); 
@@ -48,7 +50,8 @@ public class Inputs {
 		 b_WinchBrake = joy_LeftWeaponsButtons.getRawButton(7);
 		 b_LiftWinchPowerDown = joy_RightDriveStick.getRawButton(12);
 		 b_LiftWinchPowerUp = joy_RightDriveStick.getRawButton(11);
-		 b_PortcullisOpener = joy_LeftWeaponsStick.getRawButton(8); 
+		 b_PortcullisOpener = joy_LeftWeaponsStick.getRawButton(8);
+		 b_ResetShooterWinch = joy_RightDriveStick.getRawButton(7);
 		 
 		 // Testing buttons
 		 b_LowShot = joy_LeftWeaponsButtons.getRawButton(4);

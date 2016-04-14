@@ -75,6 +75,19 @@ public class Shooter{
 				
 		mot_ShooterPower.setInverted(false);
 		
+		if(inputs.b_ResetShooterWinch == true){
+//			mot_ShooterPower.setInverted(true);
+//			pidControllerShooter.enable(); //begin PID control
+//			pidControllerShooter.setSetpoint(3);
+//			SmartDashboard.putNumber("Hall Effect PID Low", pidControllerShooter.get());
+			
+			//d_ShooterPower = -0.5;
+			
+			pidControllerWinch.setSetpoint(1.0);
+			pidControllerWinch.enable(); //begin PID control
+			//SmartDashboard.putNumber("Winch PID Low", pidControllerWinch.get());
+		}
+		
 		// Test Low and High Shot Buttons
 		if(inputs.b_LowShot == true){
 //			mot_ShooterPower.setInverted(true);
@@ -82,10 +95,10 @@ public class Shooter{
 //			pidControllerShooter.setSetpoint(3);
 //			SmartDashboard.putNumber("Hall Effect PID Low", pidControllerShooter.get());
 			
-			d_ShooterPower = -0.5;
+			//d_ShooterPower = -0.5;
 			
-			pidControllerWinch.setSetpoint(2.85);
-			pidControllerWinch.enable(); //begin PID control
+			//pidControllerWinch.setSetpoint(2.85);
+			//pidControllerWinch.enable(); //begin PID control
 			SmartDashboard.putNumber("Winch PID Low", pidControllerWinch.get());
 			
 		} else if(inputs.b_HighShot == true){
@@ -94,12 +107,12 @@ public class Shooter{
 //			pidControllerShooter.setSetpoint(3);
 //			SmartDashboard.putNumber("Hall Effect PID High", pidControllerShooter.get());
 			
-			d_ShooterPower = -0.65;
-			pidControllerWinch.setSetpoint(1.05);
+			// d_ShooterPower = -0.65;
+			pidControllerWinch.setSetpoint(2.5);
 			pidControllerWinch.enable(); //begin PID control
 			SmartDashboard.putNumber("Winch PID High", pidControllerWinch.get());
 			
-		} else if(inputs.b_LowShot == false && inputs.b_HighShot ==  false){
+		} else if(inputs.b_LowShot == false && inputs.b_HighShot ==  false && inputs.b_ResetShooterWinch == false){
 			if(pidControllerWinch.isEnabled() || pidControllerShooter.isEnabled()){
 				pidControllerShooter.disable();
 				pidControllerWinch.disable();
