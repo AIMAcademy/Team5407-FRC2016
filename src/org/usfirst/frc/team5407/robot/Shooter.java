@@ -83,7 +83,7 @@ public class Shooter{
 			
 			//d_ShooterPower = -0.5;
 			
-			pidControllerWinch.setSetpoint(1.0);
+			pidControllerWinch.setSetpoint(1.4);
 			pidControllerWinch.enable(); //begin PID control
 			//SmartDashboard.putNumber("Winch PID Low", pidControllerWinch.get());
 		}
@@ -132,7 +132,7 @@ public class Shooter{
 		
 		//portcullis opener 
 		if(inputs.b_PortcullisOpener == true){
-			d_ShooterPower = -0.50;
+			d_ShooterPower = -0.75;
 			solenoids.b_ShooterArm = true;
     	}
 		

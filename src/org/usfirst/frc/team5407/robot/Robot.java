@@ -50,14 +50,6 @@ public class Robot extends IterativeRobot {
         //the camera name (ex "cam0") can be found through the roborio web interface
         //server.startAutomaticCapture("cam0");
         
-    	try {
-    	// IP Camera Code
-        frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-        camera = new AxisCamera("10.54.07.11");
-    	}
-    	catch (Exception e) {
-    		
-    	}
     }
 
 	
@@ -67,12 +59,19 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	
+    	try {
+	    	// IP Camera Code
+	        frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+	        camera = new AxisCamera("10.54.7.10");
+    	}
+    	catch (Exception e) {
+    	}
+    	
     	robotbase = new RobotBase(0,1);
     	inputs = new Inputs(0,1,2);
     	shooter = new Shooter(2,5,1,2);
     	winch = new Winch(3,7,6);
     	     
-    	
     	// Instructions to add a new solenoid:
     	// 1) Declare solenoids below.
     	// 2) Add the inputs to set the solenoid variables
@@ -170,21 +169,18 @@ public class Robot extends IterativeRobot {
     	//Timer.delay(2);		// waits for gyro to reset
     	
     	// IP Camera Code
-        NIVision.Rect rect = new NIVision.Rect(227, 307, 50, 50);
+        // NIVision.Rect rect = new NIVision.Rect(227, 307, 50, 50);
         
         while (isOperatorControl() && isEnabled()) {
         	
         	// IP Camera Code
         	try {
-        		
-            camera.getImage(frame);
-            NIVision.imaqFlip(frame, frame, FlipAxis.HORIZONTAL_AXIS);
-            NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
-            CameraServer.getInstance().setImage(frame);
-        		
+	            camera.getImage(frame);
+	            // NIVision.imaqFlip(frame, frame, FlipAxis.HORIZONTAL_AXIS);
+	            // NIVision.imaqDrawShapeOnImage(frame, frame, rect, DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+	            CameraServer.getInstance().setImage(frame);
         	}
         	catch (Exception e) {
-        		
         	}
         	
             /** robot code here! **/
@@ -213,10 +209,10 @@ public class Robot extends IterativeRobot {
 //		shooter.d_ShooterWinch = inputs.d_ShooterWinch;  // Only use this if the code below is commented out
     	  	
     	// Use potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer < 1.6 && inputs.d_ShooterWinch > 0.1){
+    	if(shooter.d_WinchPotentiometer < 2 && inputs.d_ShooterWinch > 0.1){
     		// shooter.d_ShooterWinch = -0.5;
     		shooter.d_ShooterWinch = 0;
-    	} else if (shooter.d_WinchPotentiometer > 3.4 && inputs.d_ShooterWinch < -0.1){
+    	} else if (shooter.d_WinchPotentiometer > 3.8 && inputs.d_ShooterWinch < -0.1){
     		// shooter.d_ShooterWinch = 0.5;
     		shooter.d_ShooterWinch = 0;
     	} else {
