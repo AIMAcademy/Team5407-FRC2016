@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
     	try {
     	// IP Camera Code
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-        camera = new AxisCamera("10.54.07.10");
+        camera = new AxisCamera("10.54.07.11");
     	}
     	catch (Exception e) {
     		
@@ -195,18 +195,18 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShooterKicker = inputs.b_ShooterKicker;
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
     	
-		shooter.d_ShooterWinch = -inputs.d_ShooterWinch;
+//		shooter.d_ShooterWinch = inputs.d_ShooterWinch;  // Only use this if the code below is commented out
     	  	
-    	// testing using potentiometer as limit switch
-//    	if(shooter.d_WinchPotentiometer < 1.0 && inputs.d_ShooterWinch > 0.1){
-//    		shooter.d_ShooterWinch = -0.5;
-//    		shooter.d_ShooterWinch = 0;
-//    	} else if (shooter.d_WinchPotentiometer > 3.0 && inputs.d_ShooterWinch < -0.1){
-//    		shooter.d_ShooterWinch = 0.5;
-//    		shooter.d_ShooterWinch = 0;
-//    	} else {
-//    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
-//    	}
+    	// Use potentiometer as limit switch
+    	if(shooter.d_WinchPotentiometer < 1.6 && inputs.d_ShooterWinch > 0.1){
+    		// shooter.d_ShooterWinch = -0.5;
+    		shooter.d_ShooterWinch = 0;
+    	} else if (shooter.d_WinchPotentiometer > 3.4 && inputs.d_ShooterWinch < -0.1){
+    		// shooter.d_ShooterWinch = 0.5;
+    		shooter.d_ShooterWinch = 0;
+    	} else {
+    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
+    	}
     	
     	// Obsolete:
     	// solenoids.b_ShooterArm = inputs.b_ShooterArm; <-- not needed - using method inside shooter class instead
