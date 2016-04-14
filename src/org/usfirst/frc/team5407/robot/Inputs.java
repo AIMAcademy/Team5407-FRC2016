@@ -44,8 +44,8 @@ public class Inputs {
 		 // b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
 		 b_ShooterPower = joy_LeftWeaponsStick.getRawButton(3);
 		 b_ShiftGears = joy_RightDriveStick.getTrigger();
-		 b_ShooterKicker = joy_LeftWeaponsStick.getTrigger(); 
-		 // b_ShooterArm = joy_LeftWeaponsButtons.getRawButton(1);
+		 // b_ShooterKicker = joy_LeftWeaponsStick.getTrigger(); 
+		 b_ShooterArm = joy_LeftWeaponsButtons.getRawButton(1);
 		 // b_ShooterExtension = joy_RightDriveStick.getRawButton(10); 	
 		 // b_WinchBrake = joy_LeftWeaponsButtons.getRawButton(7);
 		 // b_LiftWinchPowerDown = joy_RightDriveStick.getRawButton(12);
