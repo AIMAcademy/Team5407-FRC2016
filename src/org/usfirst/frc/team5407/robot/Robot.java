@@ -100,7 +100,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
     	switch(autonSelector){
-    		case 1:{
+    		case 1:{	// Go forward for three seconds
     			if(autoLoopCounter < 150) //Check if we've completed 100 loops (approximately 2 seconds)
 				{
     				robotbase.mot_LeftDriveMotor.set(0.75);
@@ -111,37 +111,22 @@ public class Robot extends IterativeRobot {
 				}
     			break;
     		}
-    		 case 2 :{
-     			if(autoLoopCounter < 115) //Check if we've completed 100 loops (approximately 2 seconds)
- 				{
-     				shooter.mot_ShooterWinch.set(-1);
- 					} else {
- 	     			shooter.mot_ShooterWinch.set(0);
- 				}
-     			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
- 				{
-    				robotbase.mot_LeftDriveMotor.set(0.50);
-    				robotbase.mot_RightDriveMotor.set(0.50);
-					} else {
-					robotbase.mot_LeftDriveMotor.set(0);
-					robotbase.mot_RightDriveMotor.set(0);
- 				}
+    		 case 2 :{ // Old code for low bar
+//     			if(autoLoopCounter < 115) //Check if we've completed 100 loops (approximately 2 seconds)
+// 				{
+//     				shooter.mot_ShooterWinch.set(-1);
+// 					} else {
+// 	     			shooter.mot_ShooterWinch.set(0);
+// 				}
+//     			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
+// 				{
+//    				robotbase.mot_LeftDriveMotor.set(0.50);
+//    				robotbase.mot_RightDriveMotor.set(0.50);
+//					} else {
+//					robotbase.mot_LeftDriveMotor.set(0);
+//					robotbase.mot_RightDriveMotor.set(0);
+// 				}
     		}
-    		 case 3 :{
-    			 if(autoLoopCounter < 70) {
-      				shooter.mot_ShooterWinch.set(-1);
-  					} else {
-  	     			shooter.mot_ShooterWinch.set(0);
-    			 }
-      			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
-  				{
-     				robotbase.mot_LeftDriveMotor.set(0.50);
-     				robotbase.mot_RightDriveMotor.set(0.50);
- 					} else {
- 					robotbase.mot_LeftDriveMotor.set(0);
- 					robotbase.mot_RightDriveMotor.set(0);
-  				}
-    		 }
     		default:{
     		
     		}

@@ -39,23 +39,23 @@ public class Inputs {
 		
 		 d_PowerArcadeDrive = joy_RightDriveStick.getX() * -1 * .50;
 		 d_TurnArcadeDrive = joy_RightDriveStick.getY() * -1;
-		 d_ShooterWinch = joy_LeftWeaponsStick.getY();
+		 // d_ShooterWinch = joy_LeftWeaponsStick.getY();
 		 
-		 b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
+		 // b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
 		 b_ShooterPower = joy_LeftWeaponsStick.getRawButton(3);
 		 b_ShiftGears = joy_RightDriveStick.getTrigger();
 		 b_ShooterKicker = joy_LeftWeaponsStick.getTrigger(); 
-		 b_ShooterArm = joy_LeftWeaponsButtons.getRawButton(1);
-		 b_ShooterExtension = joy_RightDriveStick.getRawButton(10); 	
-		 b_WinchBrake = joy_LeftWeaponsButtons.getRawButton(7);
-		 b_LiftWinchPowerDown = joy_RightDriveStick.getRawButton(12);
-		 b_LiftWinchPowerUp = joy_RightDriveStick.getRawButton(11);
+		 // b_ShooterArm = joy_LeftWeaponsButtons.getRawButton(1);
+		 // b_ShooterExtension = joy_RightDriveStick.getRawButton(10); 	
+		 // b_WinchBrake = joy_LeftWeaponsButtons.getRawButton(7);
+		 // b_LiftWinchPowerDown = joy_RightDriveStick.getRawButton(12);
+		 // b_LiftWinchPowerUp = joy_RightDriveStick.getRawButton(11);
 		 b_PortcullisOpener = joy_LeftWeaponsStick.getRawButton(8);
-		 b_ResetShooterWinch = joy_RightDriveStick.getRawButton(7);
+		 //b_ResetShooterWinch = joy_RightDriveStick.getRawButton(7);
 		 
 		 // Testing buttons
-		 b_LowShot = joy_LeftWeaponsButtons.getRawButton(4);
-		 b_HighShot = joy_LeftWeaponsButtons.getRawButton(3);
+		 // b_LowShot = joy_LeftWeaponsButtons.getRawButton(4);
+		 // b_HighShot = joy_LeftWeaponsButtons.getRawButton(3);
 		 
 		 // Obsolete:
 		 // b_LiftRelease = joy_LeftWeaponsStick.getRawButton(4);
