@@ -180,7 +180,7 @@ public class Robot extends IterativeRobot {
         	
             /** robot code here! **/
             inputs.readValues();
-            robotbase.update();
+            robotbase.update(inputs);
             solenoids.update();
             shooter.update(inputs, solenoids);
             shooter.readValues();
@@ -201,18 +201,18 @@ public class Robot extends IterativeRobot {
     	solenoids.b_ShooterKicker = inputs.b_ShooterKicker;
     	solenoids.b_ShooterExtension = inputs.b_ShooterExtension;
     	
-//		shooter.d_ShooterWinch = inputs.d_ShooterWinch;  // Only use this if the code below is commented out
+		shooter.d_ShooterWinch = inputs.d_ShooterWinch;  // Only use this if the code below is commented out
     	  	
     	// Use potentiometer as limit switch
-    	if(shooter.d_WinchPotentiometer < 2 && inputs.d_ShooterWinch > 0.1){
-    		// shooter.d_ShooterWinch = -0.5;
-    		shooter.d_ShooterWinch = 0;
-    	} else if (shooter.d_WinchPotentiometer > 3.8 && inputs.d_ShooterWinch < -0.1){
-    		// shooter.d_ShooterWinch = 0.5;
-    		shooter.d_ShooterWinch = 0;
-    	} else {
-    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
-    	}
+//    	if(shooter.d_WinchPotentiometer < 2 && inputs.d_ShooterWinch > 0.1){
+//    		// shooter.d_ShooterWinch = -0.5;
+//    		shooter.d_ShooterWinch = 0;
+//    	} else if (shooter.d_WinchPotentiometer > 3.8 && inputs.d_ShooterWinch < -0.1){
+//    		// shooter.d_ShooterWinch = 0.5;
+//    		shooter.d_ShooterWinch = 0;
+//    	} else {
+//    		shooter.d_ShooterWinch = inputs.d_ShooterWinch;
+//    	}
     	
     	// Obsolete:
     	// solenoids.b_ShooterArm = inputs.b_ShooterArm; <-- not needed - using method inside shooter class instead

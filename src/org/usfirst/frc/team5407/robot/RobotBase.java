@@ -38,15 +38,20 @@ public class RobotBase {
 		shooterGyro.reset();
     }
 	
-    public void update(){
+    public void update(Inputs inputs){
 
     	/* Motors on one side are flipped over (inverted) so that if we apply the + power the robot goes in what you consider forward.  
     	 * In the case below we flip the Right. If it turns out that your robot is going backwards then you
     	 * would remove * -1 from right and put it on left. Just negating  as in -d_LeftFrontDrivePower does the same thing.      
     	 */
-    	mot_LeftDriveMotor.set(d_LeftDrivePower);
-    	mot_RightDriveMotor.set(d_RightDrivePower*-1.0);
-    }
+    	if(inputs.b_WinchSwitch == false){
+	    	mot_LeftDriveMotor.set(d_LeftDrivePower);
+	    	mot_RightDriveMotor.set(d_RightDrivePower*-1.0);
+    	} else if(inputs.b_WinchSwitch == true){
+    		mot_LeftDriveMotor.set(0);
+        	mot_RightDriveMotor.set(0);
+    	}
+    }    	
     
     public void gyroUpdate(){
 		// d_gyroAngle = shooterGyro.getAngle();

@@ -14,6 +14,9 @@ public class Winch {
 	double d_WinchBrake;	
 	double d_LiftWinchPower;
 	double d_LiftRelease;
+	double d_WinchPower;
+	
+	boolean b_WinchSwitch;
 	
 	int i_periodicCounter;
 		
@@ -43,6 +46,12 @@ public class Winch {
 //	    		d_WinchBrake = 0;
 //	    	}
 //	    	
+		 	if(inputs.b_WinchSwitch == true){
+		 		d_WinchPower = inputs.d_WinchPower;
+	    	} else if(inputs.b_WinchSwitch == false){
+	    		d_WinchPower = 0;
+	    	}			
+			
 //	    	//this is just for testing servo values can be tuned 
 	    	if(inputs.b_ScissorLift == true){
 //	    		d_LiftRelease = 0.2;
@@ -63,7 +72,7 @@ public class Winch {
 //	    	
 //			serv_WinchBrake.set(d_WinchBrake);
 //			serv_LiftRelease.set(d_LiftRelease);
-//			mot_LiftWinchPower.set(d_LiftWinchPower);
+			mot_LiftWinchPower.set(d_WinchPower);
 //
 		}
 		
