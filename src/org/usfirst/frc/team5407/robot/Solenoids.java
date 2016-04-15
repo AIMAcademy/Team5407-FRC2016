@@ -16,14 +16,13 @@ public class Solenoids {
 	boolean b_ShooterArm;
 	boolean b_ShooterExtension; 
 	boolean b_ScissorLift; 
-
+	
 	public Solenoids(int s0,int s1,int s2,int s3, int s4){
 		s_robotbase = new Solenoid(s0);
 		s_shooterkicker = new Solenoid(s1);
 		s_shooterarm = new Solenoid(s2);
 		s_shooterextension = new Solenoid(s3);
 		s_scissorlift = new Solenoid(s4);
-		
 		
 	}
 	
@@ -34,6 +33,8 @@ public class Solenoids {
 //		} else if (inputs.b_ShiftGears == false){
 //			s_robotbase.set(false);	
 //		}
+		
+		
 		
 		s_robotbase.set(b_ShiftGears);
 		s_shooterkicker.set(b_ShooterKicker);

@@ -111,7 +111,17 @@ public class Robot extends IterativeRobot {
 				}
     			break;
     		}
-    		 case 2 :{ // Old code for low bar
+    		 case 2 :{ // Low Bar
+     			if(autoLoopCounter < 200) //Check if we've completed 100 loops (approximately 2 seconds)
+				{
+	 				robotbase.mot_LeftDriveMotor.set(0.50);
+	 				robotbase.mot_RightDriveMotor.set(0.50);
+					} else {
+					robotbase.mot_LeftDriveMotor.set(0);
+					robotbase.mot_RightDriveMotor.set(0);
+				}
+    			 
+    			// Old code for low bar
 //     			if(autoLoopCounter < 115) //Check if we've completed 100 loops (approximately 2 seconds)
 // 				{
 //     				shooter.mot_ShooterWinch.set(-1);
@@ -141,7 +151,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit(){
     	// robotbase.reset();
     	// Timer.delay(2);
-    	winch.zeroInputs();
+    	//winch.zeroInputs();
     }
 
     /**

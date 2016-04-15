@@ -35,36 +35,36 @@ public class Winch {
 	
 		public void update(Inputs inputs, Solenoids solenoids){
 			
-			d_LiftWinchPower = 0;
-			
-	    	if(inputs.b_WinchBrake == true){
-	    		d_WinchBrake = 0.8;
-	    	} else {
-	    		d_WinchBrake = 0;
-	    	}
-	    	
-	    	//this is just for testing servo values can be tuned 
+//		d_LiftWinchPower = 0;
+//			
+//	    	if(inputs.b_WinchBrake == true){
+//	    		d_WinchBrake = 0.8;
+//	    	} else {
+//	    		d_WinchBrake = 0;
+//	    	}
+//	    	
+//	    	//this is just for testing servo values can be tuned 
 	    	if(inputs.b_ScissorLift == true){
-	    		d_LiftRelease = 0.2;
-	    		if (++i_periodicCounter > 200) {
+//	    		d_LiftRelease = 0.2;
+	    		 {
 	    			solenoids.b_ScissorLift = true;
 	    		}
 	    	} else {
-	    		d_LiftRelease = 0.8;
+//	    		d_LiftRelease = 0.8;
     			solenoids.b_ScissorLift = false;
 	    	}
-	     	
-	    	//this is just for testing can be motor speed can be tuned
-	    	if(inputs.b_LiftWinchPowerUp == true){
-	    		d_LiftWinchPower = 0.80;
-	    	} else if(inputs.b_LiftWinchPowerDown == true) {
-	    		d_LiftWinchPower = -0.20;
-	    	}
-	    	
-			serv_WinchBrake.set(d_WinchBrake);
-			serv_LiftRelease.set(d_LiftRelease);
-			mot_LiftWinchPower.set(d_LiftWinchPower);
-
+//	     	
+//	    	//this is just for testing can be motor speed can be tuned
+//	    	if(inputs.b_LiftWinchPowerUp == true){
+//	    		d_LiftWinchPower = 0.80;
+//	    	} else if(inputs.b_LiftWinchPowerDown == true) {
+//	    		d_LiftWinchPower = -0.20;
+//	    	}
+//	    	
+//			serv_WinchBrake.set(d_WinchBrake);
+//			serv_LiftRelease.set(d_LiftRelease);
+//			mot_LiftWinchPower.set(d_LiftWinchPower);
+//
 		}
 		
 		public void zeroInputs(){

@@ -18,6 +18,10 @@ public class Shooter{
 	double d_ShooterWinch;
 	
 	boolean autonLow;
+	boolean b_ArmStatus;
+	boolean buttonToggle = false;
+	boolean buttonLast = false;
+	boolean buttonValue;
 	
 	// PID System Variables //
     // final double setPoints[] = {0.1, 0.25}; // low and high setpoints
@@ -121,7 +125,7 @@ public class Shooter{
 		
 		// Test spinning up shooter wheel
 		if(inputs.b_ShooterPower == true){
-			d_ShooterPower = -0.65;
+			d_ShooterPower = -1;
     	}
 		
 		// Intake mechanism
@@ -132,9 +136,22 @@ public class Shooter{
 		
 		//portcullis opener 
 		if(inputs.b_PortcullisOpener == true){
-			d_ShooterPower = -0.75;
+			d_ShooterPower = -1;
 			solenoids.b_ShooterArm = true;
     	}
+		
+		// Testing toggle button for extending shooter arm
+		if(inputs.b_ExtendArm == true){
+			b_ArmStatus = true;
+		} else if (inputs.b_RetractArm == true){
+			b_ArmStatus = false;
+		}
+		
+		if(b_ArmStatus){
+			solenoids.b_ShooterArm = true;
+		} else if(!b_ArmStatus){
+			solenoids.b_ShooterArm = false;
+		}
 		
 		if(!pidControllerWinch.isEnabled()){
 			mot_ShooterWinch.set(d_ShooterWinch);
@@ -144,5 +161,5 @@ public class Shooter{
 		mot_ShooterPower.set(d_ShooterPower);
 
 	}
-
+	
 }

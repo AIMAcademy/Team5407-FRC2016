@@ -27,6 +27,8 @@ public class Inputs {
 	boolean b_PortcullisOpener;
 	
 	boolean b_ResetShooterWinch;
+	boolean b_ExtendArm;
+	boolean b_RetractArm;
 	
 	public Inputs(int USBConnector_RightDriveStick, int USBConnector_joy_LeftWeaponsStick, int USBConnector_joy_LeftWeaponsButtons){
 		joy_RightDriveStick = new Joystick(USBConnector_RightDriveStick); 
@@ -41,7 +43,7 @@ public class Inputs {
 		 d_TurnArcadeDrive = joy_RightDriveStick.getY() * -1;
 		 // d_ShooterWinch = joy_LeftWeaponsStick.getY();
 		 
-		 // b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
+		 b_ScissorLift = joy_LeftWeaponsButtons.getRawButton(2);
 		 b_ShooterPower = joy_LeftWeaponsStick.getRawButton(3);
 		 b_ShiftGears = joy_RightDriveStick.getTrigger();
 		 // b_ShooterKicker = joy_LeftWeaponsStick.getTrigger(); 
@@ -52,6 +54,8 @@ public class Inputs {
 		 // b_LiftWinchPowerUp = joy_RightDriveStick.getRawButton(11);
 		 b_PortcullisOpener = joy_LeftWeaponsStick.getRawButton(8);
 		 //b_ResetShooterWinch = joy_RightDriveStick.getRawButton(7);
+		 b_ExtendArm = joy_LeftWeaponsButtons.getRawButton(4);
+		 b_RetractArm = joy_LeftWeaponsButtons.getRawButton(3);
 		 
 		 // Testing buttons
 		 // b_LowShot = joy_LeftWeaponsButtons.getRawButton(4);
