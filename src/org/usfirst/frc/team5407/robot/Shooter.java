@@ -79,6 +79,12 @@ public class Shooter{
 				
 		mot_ShooterPower.setInverted(false);
 		
+		if(b_ArmStatus){
+			solenoids.b_ShooterArm = true;
+		} else if(!b_ArmStatus){
+			solenoids.b_ShooterArm = false;
+		}
+		
 		if(inputs.b_ResetShooterWinch == true){
 //			mot_ShooterPower.setInverted(true);
 //			pidControllerShooter.enable(); //begin PID control
@@ -145,12 +151,6 @@ public class Shooter{
 			b_ArmStatus = true;
 		} else if (inputs.b_RetractArm == true){
 			b_ArmStatus = false;
-		}
-		
-		if(b_ArmStatus){
-			solenoids.b_ShooterArm = true;
-		} else if(!b_ArmStatus){
-			solenoids.b_ShooterArm = false;
 		}
 		
 		if(!pidControllerWinch.isEnabled()){
