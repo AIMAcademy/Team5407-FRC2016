@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
     	catch (Exception e) {
     	}
     	
-    	robotbase = new RobotBase(0,1);
+    	robotbase = new RobotBase(0,1,8);
     	inputs = new Inputs(0,1,2);
     	shooter = new Shooter(2,5,1,2);
     	winch = new Winch(3,7,6);
@@ -112,37 +112,48 @@ public class Robot extends IterativeRobot {
     			break;
     		}
     		 case 2 :{ // Low Bar
-     			if(autoLoopCounter < 200) //Check if we've completed 100 loops (approximately 2 seconds)
-				{
-	 				robotbase.mot_LeftDriveMotor.set(0.50);
-	 				robotbase.mot_RightDriveMotor.set(0.50);
+     			if(autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+     				robotbase.mot_BackArmMotor.set(0.25);
+ 					} else {
+ 	     			robotbase.mot_BackArmMotor.set(0);
+ 				}
+     			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+    				robotbase.mot_LeftDriveMotor.set(0.50);
+    				robotbase.mot_RightDriveMotor.set(0.50);
 					} else {
 					robotbase.mot_LeftDriveMotor.set(0);
 					robotbase.mot_RightDriveMotor.set(0);
-				}
-    			 
-    			// Old code for low bar
-//     			if(autoLoopCounter < 115) //Check if we've completed 100 loops (approximately 2 seconds)
-// 				{
-//     				shooter.mot_ShooterWinch.set(-1);
-// 					} else {
-// 	     			shooter.mot_ShooterWinch.set(0);
-// 				}
-//     			if(autoLoopCounter > 100 && autoLoopCounter < 300) //Check if we've completed 100 loops (approximately 2 seconds)
-// 				{
-//    				robotbase.mot_LeftDriveMotor.set(0.50);
-//    				robotbase.mot_RightDriveMotor.set(0.50);
-//					} else {
-//					robotbase.mot_LeftDriveMotor.set(0);
-//					robotbase.mot_RightDriveMotor.set(0);
-// 				}
+ 				}
+     			break;
     		}
+    		 case 3 :{ // Cheval de Frise
+     			if(autoLoopCounter < 150) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+     				robotbase.mot_LeftDriveMotor.set(-0.25);
+     				robotbase.mot_RightDriveMotor.set(-0.25);
+// 					} else {
+// 					robotbase.mot_LeftDriveMotor.set(0);
+// 					robotbase.mot_RightDriveMotor.set(0);
+ 				}
+     			if(autoLoopCounter > 200 && autoLoopCounter < 400) //Check if we've completed 100 loops (approximately 2 seconds)
+ 				{
+	    			solenoids.b_ScissorLift = true;
+    				robotbase.mot_LeftDriveMotor.set(-0.5);
+    				robotbase.mot_RightDriveMotor.set(-0.5);
+					} else if(autoLoopCounter > 400){
+					robotbase.mot_LeftDriveMotor.set(0);
+					robotbase.mot_RightDriveMotor.set(0);
+ 				}
+     			break;
+    		 }
     		default:{
-    		
     		}
     		
     	}
     	autoLoopCounter++;
+        solenoids.update();
     }
     
     /**

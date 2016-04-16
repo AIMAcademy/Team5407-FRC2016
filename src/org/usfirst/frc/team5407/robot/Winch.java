@@ -40,11 +40,11 @@ public class Winch {
 			
 //		d_LiftWinchPower = 0;
 //			
-//	    	if(inputs.b_WinchBrake == true){
-//	    		d_WinchBrake = 0.8;
-//	    	} else {
-//	    		d_WinchBrake = 0;
-//	    	}
+	    	if(inputs.b_WinchBrake == true){
+	    		d_WinchBrake = 0.8;
+	    	} else {
+	    		d_WinchBrake = 0;
+	    	}
 //	    	
 		 	if(inputs.b_WinchSwitch == true){
 		 		d_WinchPower = inputs.d_WinchPower;
@@ -70,7 +70,7 @@ public class Winch {
 //	    		d_LiftWinchPower = -0.20;
 //	    	}
 //	    	
-//			serv_WinchBrake.set(d_WinchBrake);
+			serv_WinchBrake.set(d_WinchBrake);
 //			serv_LiftRelease.set(d_LiftRelease);
 			mot_LiftWinchPower.set(d_WinchPower);
 //

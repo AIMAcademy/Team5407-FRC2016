@@ -31,6 +31,8 @@ public class Inputs {
 	boolean b_ExtendArm;
 	boolean b_RetractArm;
 	boolean b_WinchSwitch;
+	boolean b_BackArmUp;
+	boolean b_BackArmDown;
 	
 	public Inputs(int USBConnector_RightDriveStick, int USBConnector_joy_LeftWeaponsStick, int USBConnector_joy_LeftWeaponsButtons){
 		joy_RightDriveStick = new Joystick(USBConnector_RightDriveStick); 
@@ -60,6 +62,8 @@ public class Inputs {
 		 b_ExtendArm = joy_LeftWeaponsButtons.getRawButton(4);
 		 b_RetractArm = joy_LeftWeaponsButtons.getRawButton(3);
 		 b_WinchSwitch = joy_RightDriveStick.getRawButton(7);
+		 b_BackArmUp = joy_LeftWeaponsStick.getRawButton(10);
+		 b_BackArmDown = joy_LeftWeaponsStick.getRawButton(11);
 		 
 		 // Testing buttons
 		 // b_LowShot = joy_LeftWeaponsButtons.getRawButton(4);
